@@ -1,96 +1,85 @@
 // =============================================================
-// 1. ЗБЕРЕЖЕННЯ ВИБРАНОГО ТУРУ (SHOP → PAYMENT)
+// 1. ДОДАВАННЯ ТУРУ В КОШИК
 // =============================================================
 
-// Знаходимо всі кнопки з класом .buy-btn (на shop.html)
 const buyButtons = document.querySelectorAll(".buy-btn");
 
-if (buyButtons) {
-    buyButtons.forEach(btn => {
-        btn.addEventListener("click", function () {
-            const tourName = this.getAttribute("data-tour");
+buyButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+        const tourName = btn.dataset.tour;
+        const tourPrice = btn.dataset.price;
 
-            // Зберігаємо в localStorage
-            localStorage.setItem("selectedTour", tourName);
+        const tour = {
+            name: tourName,
+            price: tourPrice
+        };
 
-            // Перехід на сторінку оплати
-            window.location.href = "payment.html";
-        });
+        localStorage.setItem("selectedTour", JSON.stringify(tour));
+
+        window.location.href = "payment.html";
     });
-}
-
+});
 
 
 // =============================================================
-// 2. АВТОЗАПОВНЕННЯ ФОРМИ ОПЛАТИ НА payment.html
+// 2. АВТОЗАПОВНЕННЯ НА СТОРІНЦІ ОПЛАТИ
 // =============================================================
 
 const tourInput = document.querySelector("#tour-input");
 
 if (tourInput) {
-    const savedTour = localStorage.getItem("selectedTour");
+    const savedTour = JSON.parse(localStorage.getItem("selectedTour"));
 
     if (savedTour) {
-        tourInput.value = savedTour;
+        tourInput.value = savedTour.name;
     }
 }
 
 
-
 // =============================================================
-// 3. ОБРОБКА ФОРМИ ОПЛАТИ
+// 3. ОБРОБКА ОПЛАТИ
 // =============================================================
 
 const paymentForm = document.querySelector("#payment-form");
 
 if (paymentForm) {
-    paymentForm.addEventListener("submit", function (event) {
-        event.preventDefault(); // не оновлюємо сторінку
+    paymentForm.addEventListener("submit", e => {
+        e.preventDefault();
 
-        alert("Дякую! Тур успішно оплачено ✔");
+        alert("🎉 Оплата успішна! Гарної подорожі 🌴");
 
-        // очищаємо форму
-        paymentForm.reset();
-
-        // видаляємо останній вибраний тур
         localStorage.removeItem("selectedTour");
+        paymentForm.reset();
     });
 }
 
 
-
 // =============================================================
-// 4. ЛЕГКА АНІМАЦІЯ КНОПОК
+// 4. АНІМАЦІЯ КНОПОК
 // =============================================================
 
-const buttons = document.querySelectorAll(".btn");
-
-if (buttons) {
-    buttons.forEach(btn => {
-        btn.addEventListener("mouseenter", () => {
-            btn.style.transition = "0.2s";
-            btn.style.transform = "scale(1.05)";
-            btn.style.opacity = "0.8";
-        });
-
-        btn.addEventListener("mouseleave", () => {
-            btn.style.transform = "scale(1)";
-            btn.style.opacity = "1";
-        });
+document.querySelectorAll(".btn").forEach(btn => {
+    btn.addEventListener("mouseenter", () => {
+        btn.style.transform = "scale(1.08)";
+        btn.style.transition = "0.2s";
     });
-}
 
+    btn.addEventListener("mouseleave", () => {
+        btn.style.transform = "scale(1)";
+    });
+});
 
 
 // =============================================================
-// 5. МЕНЮ-БУРГЕР (необов’язково, але вже додано)
+// 5. MENU BURGER
 // =============================================================
 
 const burger = document.querySelector(".burger");
-const navMenu = document.querySelector("nav");
+const nav = document.querySelector(".nav");
 
-if (burger && navMenu) {
+if (burger && nav) {
     burger.addEventListener("click", () => {
-        navMenu.classList.toggle("active");
+        nav.classList.toggle("active");
     });
 }
+
