@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Оплата — Travel Agency</title>
+    <link rel="stylesheet" href="css/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+<header class="header">
+    <div class="logo">🌍 TravelAgency</div>
+
+    <nav class="nav">
+        <a href="index.html">Головна</a>
+        <a href="shop.html">Тури</a>
+        <a href="payment.html">Оплата</a>
+    </nav>
+
+    <div class="burger">☰</div>
+</header>
+
+<section class="payment">
+    <h2>Оплата туру</h2>
+
+    <form id="payment-form">
+
+        <input type="text" placeholder="Ваше ім'я" required>
+        <input type="text" placeholder="Телефон" required>
+
+        <input id="tour-input" type="text" placeholder="Назва туру" required>
+
+        <select required>
+            <option>Онлайн-оплата</option>
+            <option>Банківська картка</option>
+            <option>Готівка</option>
+        </select>
+
+        <button class="btn">Оплатити</button>
+    </form>
+</section>
+
+<section class="contacts">
+    <h2>Контакти</h2>
+    <p>📞 +380 99 123 45 67</p>
+    <p>📧 info@travel.com</p>
+    <p>🏢 м. Київ, Хрещатик 10</p>
+</section>
+
+<footer>
+    <p>© 2025 TravelAgency</p>
+</footer>
+
+<script src="js/index.js"></script>
+</body>
+</html>
