@@ -1,0 +1,63 @@
+/* ==================================== */
+/*     IMPROVED TROPICAL PAYMENT UI    */
+/* ==================================== */
+
+.payment {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.payment h2 {
+    font-size: 32px;
+    color: var(--primary);
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+#payment-form {
+    max-width: 450px;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #fff7d9, #ffeab9, #ffd68a);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    border: 3px solid var(--accent);
+}
+
+/* INPUTS */
+
+#payment-form input,
+#payment-form select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 18px;
+    border-radius: 10px;
+    border: 2px solid var(--primary);
+    background: #fff;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+#payment-form input:focus,
+#payment-form select:focus {
+    border-color: var(--secondary);
+    box-shadow: 0 0 10px rgba(0, 194, 168, 0.5);
+}
+
+/* BUTTON */
+
+#payment-form button {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    padding: 14px 20px;
+    width: 100%;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    color: var(--white);
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s, box-shadow 0.3s
+}
